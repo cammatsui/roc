@@ -6,6 +6,7 @@ from roc import DB_URI, TEST_DB_URI
 from flask import current_app
 from roc.forms import LoginForm, RegistrationForm, ResetForm, ResetRequestForm
 
+AWS_REGION = 'us-east-1'
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
@@ -132,7 +133,7 @@ def send_email(recipients, subject='', text='', html=''):
     if current_app.config[DB_URI] == TEST_DB_URI: return
 
     import boto3
-    ses = boto3.client('ses')
+    ses = boto3.client('ses', region_name=AWS_REGION)
     sender = 'info@rateourcourses.com'
 
     ses.send_email(
