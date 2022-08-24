@@ -1,0 +1,90 @@
+<i class="bi bi-star-fill rating-star-fill" id="star-1-input-{{ input_id }}"></i>
+<i class="bi bi-star rating-star" id="star-2-input-{{ input_id }}"></i>
+<i class="bi bi-star rating-star" id="star-3-input-{{ input_id }}"></i>
+<i class="bi bi-star rating-star" id="star-4-input-{{ input_id }}"></i>
+<i class="bi bi-star rating-star mr-3" id="star-5-input-{{ input_id }}"></i>
+
+<script>
+    var input_id = "{{ input_id }}"
+    
+    function selectStar(star) {
+        star.classList.remove("bi-star", "rating-star");
+        star.classList.add("bi-star-fill", "rating-star-fill");
+    }
+
+    function deSelectStar(star) {
+        star.classList.remove("bi-star-fill", "rating-star-fill");
+        star.classList.add("bi-star", "rating-star");
+    }
+
+    function getStarId(num, input_id) {
+        return 
+    }
+
+    var star1 = document.getElementById("star-1-input-" + input_id);
+    var star2 = document.getElementById("star-2-input-" + input_id);
+    var star3 = document.getElementById("star-3-input-" + input_id);
+    var star4 = document.getElementById("star-4-input-" + input_id);
+    var star5 = document.getElementById("star-5-input-" + input_id);
+
+    star1.addEventListener('click', function () {
+        var hiddenInput = document.getElementById(input_id);
+        hiddenInput.value = 1;
+        selectStar(star1);
+        deSelectStar(star2);
+        deSelectStar(star3);
+        deSelectStar(star4);
+        deSelectStar(star5);
+    });
+    star2.addEventListener('click', function () {
+        var hiddenInput = document.getElementById(input_id);
+        hiddenInput.value = 2;
+        selectStar(star1);
+        selectStar(star2);
+        deSelectStar(star3);
+        deSelectStar(star4);
+        deSelectStar(star5);
+    });
+    star3.addEventListener('click', function () {
+        var hiddenInput = document.getElementById(input_id)
+        hiddenInput.value = 3;
+        selectStar(star1);
+        selectStar(star2);
+        selectStar(star3);
+        deSelectStar(star4);
+        deSelectStar(star5);
+    });
+    star4.addEventListener('click', function () {
+        var hiddenInput = document.getElementById(input_id)
+        hiddenInput.value = 4;
+        selectStar(star1);
+        selectStar(star2);
+        selectStar(star3);
+        selectStar(star4);
+        deSelectStar(star5);
+    });
+    star5.addEventListener('click', function () {
+        var hiddenInput = document.getElementById(input_id)
+        hiddenInput.value = 5;
+        selectStar(star1);
+        selectStar(star2);
+        selectStar(star3);
+        selectStar(star4);
+        selectStar(star5);
+    });
+
+    function updateStar(star, star_num, input_id) {
+        var hiddenInput = document.getElementById(input_id)
+        hiddenInput.value = starNum;
+        console.log("Setting input " + input_id + " to " + hiddenInput.value);
+        for (var i = 1; i <= 5; i++) {
+            if (i <= starNum) {
+                selectStar(i, input_id);
+            } else {
+                deSelectStar(i, input_id);
+            }
+        }
+    }
+
+
+</script>

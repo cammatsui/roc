@@ -1,0 +1,10 @@
+{% extends "single_card.html" %}
+
+{% block card_content %}
+<legend class="border-bottom mb-2">Departments</legend>
+    {% for department in departments %}
+        {% with department=department %}
+            {% include "components/department.html" %}
+        {% endwith %}
+    {% endfor %}
+{% endblock card_content %}

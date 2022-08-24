@@ -1,0 +1,14 @@
+{% extends "single_card.html" %}
+
+{% block card_content %}
+    {% if course.reviews|length > 0 %}
+        <legend class="border-bottom mb-2">Reviews for {{ course.name }}</legend>
+        {% for review in course.reviews %}
+            {% with review=review %}
+                {% include "components/review.html" %}
+            {% endwith %}
+        {% endfor %}
+    {% else %}
+        <legend class="mb-2">No Reviews for {{ course.name }}.</legend>
+    {% endif %}
+{% endblock card_content %}

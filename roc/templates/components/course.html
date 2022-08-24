@@ -1,0 +1,21 @@
+{% if course.reviews|length > 0 %}
+    <div class="row my-3 mx-0 mx-md-3 justify-content-center">
+        <div class="card sub-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ department.code }}-{{ course.code }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ course.name }}</h6>
+                <a href="{{ url_for('reviews.course_reviews', course_id=course.id) }}">{{ course.reviews|length }} Reviews</a>
+            </div>
+        </div>
+    </div> 
+{% else %}
+    <div class="row my-3 mx-0 mx-md-3 justify-content-center">
+        <div class="card sub-card">
+            <div class="card-body">
+                <h5 class="card-title greyed-out">{{ department.code }}-{{ course.code }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted greyed-out">{{ course.name }}</h6>
+                <a class="greyed-out">No Reviews</a>
+            </div>
+        </div>
+    </div> 
+{% endif %}

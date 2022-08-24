@@ -1,0 +1,11 @@
+{% extends "single_card.html" %}
+{% block card_content %}
+    <legend class="border-bottom mb-4">My Account</legend>
+    <div class="row mb-3 justify-content-center">
+        <div class="mx-4" style="width: 100%;">
+                <p id="registered">Registered: <span style="float:right;">{{ user.registered }}</span></p>
+                <p>Reviews: <span style="float:right;">{{ user.reviews|length }}</span></p>
+                <a href="{{ url_for('reviews.user_reviews') }}">View My Reviews</a>
+        </div>
+    </div>
+{% endblock card_content %}

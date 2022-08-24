@@ -1,0 +1,188 @@
+/* Purple styled button for RoC. */
+.roc-btn-purple {
+    color: white;
+    background-color: #492081;
+    border-color: #000000;
+    border-width: 1px;
+}
+
+/* "Card inside a card" like review or course or dept etc. */
+.sub-card {
+    width: 100%;
+    background-color: #F6F6F5;
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+  border-top: none;
+}
+
+
+.rating-star {
+    margin: 1px;
+}
+
+.rating-star-fill {
+    color: #cca539;
+    margin: 1px;
+}
+
+/* Greyed out text. */
+.greyed-out {
+    color: #b6b6b6;
+}
+
+/* Styling for background. */
+html, body {
+    height: 100vh;
+}
+
+.site-background {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+    background-image: url('/static/img/bg-light.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+/* Home page styling. */
+.site-background-static {
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background-image: url('/static/img/bg-light.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+
+.title {
+    font-weight: 400;
+    word-spacing: 10px;
+    letter-spacing: 5px;
+    font-size: 5.5rem;
+    color: #FFF;
+}
+
+.title-mobile {
+    font-weight: 300;
+    word-spacing: 8px;
+    letter-spacing: 3px;
+    font-size: 4rem;
+    color: #FFF;
+}
+
+.title-purple {
+    color: #674EA7;
+    font-weight: bolder;
+}
+
+.home-overlay {
+    width: 100%;
+    min-height: 70vh;
+}
+
+.home-info {
+    position: absolute;
+    min-height: 100vh;
+    background-color: white;
+    top: 70vh;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.home-bot-row {
+    right: 0px;
+    left: 0px;
+    display: block;
+    min-height: 20vh;
+}
+
+.team-row {
+    min-height: 20vh;
+}
+
+#home-bottom {
+    min-width: 100%;
+    min-height: 100vh;
+    background-color: #FFF;
+    width: 100%;
+    right: 0px;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Styling for add review form */
+.rating-input {
+    width: 3rem;
+}
+
+.content-center {
+  display: flex;
+  align-items: center; 
+}
+
+/* Styling for search in nav bar */
+.search-input{
+    background: #F8F9FA;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+}
+
+.search-input .autocom-box{
+    border-radius: 5px;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    z-index: 1035;
+}
+
+.autocom-box .search-option{
+    list-style: none;
+    padding: 8px 12px;
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+    z-index: 1035;
+    text-decoration: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.autocom-box a {
+    color: inherit;
+    text-decoration: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bordered {
+    border-width: 1px; 
+    border-style: solid;
+    border-color: rgba(0,0,0,.25)
+}
+
+.autocom-box a:hover {
+    background-color: #efefef;
+}
+
+.autocom-box li:hover {
+    background-color: #efefef;
+}
+
+.amherst {
+    color: #674ea7;
+    font-weight: bolder;
+}

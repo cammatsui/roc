@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-0">
+    <a class="navbar-brand" href="{{ url_for('routes.home') }}">RoC <b class="amherst">AMHERST</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{{ url_for('reviews.departments') }}"><i class="bi bi-book mr-2"></i>View</a>
+            <a class="nav-item nav-link" href="{{ url_for('reviews.add_review') }}"><i class="bi bi-plus-square mr-2"></i>Add New</a>
+        </div>
+
+        <div class="search-wrapper mr-4 d-none d-lg-block">
+            <div class="search-input">
+                <input type="text" class="form-control mr-sm-2" placeholder="Search..." id="search-input">
+                <div class="autocom-box ui-menu ui-widget ui-front ui-autocomplete p-0 m-0" id="search-list">
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-nav">
+            {% if user %}
+            <a class="nav-item nav-link" href="{{ url_for('user.about') }}"><i class="bi bi-file-person mr-2"></i>{{ user.email }}</a>
+            <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}"><i class="bi bi-door-open mr-2"></i>Log Out</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{{ url_for('auth.login') }}"><i class="bi bi-file-person mr-2"></i>Login</a>
+            <a class="nav-item nav-link" href="{{ url_for('auth.register') }}"><i class="bi bi-clipboard mr-2"></i>Register</a>
+            {% endif %}
+        </div>
+        <div class="search-wrapper mr-4 d-lg-none">
+            <div class="search-input">
+                <input type="text" class="form-control mr-sm-2" placeholder="Search..." id="mobile-search-input">
+                <div class="autocom-box ui-menu ui-widget ui-front ui-autocomplete p-0 m-0" id="mobile-search-list">
+                </div>
+            </div>
+        </div>
+        <!-- Search Autocomplete Script -->
+        <script type="text/javascript" src="{{url_for('static', filename='js/search_autocomplete.js')}}"></script>
+
+    </div>
+</nav>

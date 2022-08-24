@@ -1,0 +1,3 @@
+graft roc/static
+graft roc/templates
+global-exclude *.pyc

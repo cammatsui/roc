@@ -1,0 +1,14 @@
+{% extends "single_card.html" %}
+
+{% block card_content %}
+    {% if professor.reviews|length > 0 %}
+    <legend class="border-bottom mb-2">Reviews for {{ professor.name }}</legend>
+        {% for review in professor.reviews %}
+            {% with review=review %}
+                {% include "components/review.html" %}
+            {% endwith %}
+        {% endfor %}
+    {% else %}
+        <legend class="m-2">No Reviews for {{ professor.name }}.</legend>
+    {% endif %}
+{% endblock card_content %}

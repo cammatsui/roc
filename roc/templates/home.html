@@ -1,0 +1,70 @@
+{% extends "home_layout.html" %}
+
+<!-- Content over Memorial Hill picture. -->
+{% block top_content %}
+<div class="row">
+    <div class="container d-flex align-items-center" style="height:70vh;">
+        <div class="container">
+            <div class="row d-flex justify-content-center align">
+                <h1 class="title d-none d-md-flex">RoC</h1>
+                <h1 class="title-mobile d-flex d-md-none">RoC</h1>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <h1 class="title title-purple d-none d-md-flex">AMHERST</h1>
+                <h1 class="title-mobile title-purple d-flex d-md-none">AMHERST</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock top_content %}
+
+<!-- Content below picture. -->
+{% block bot_content %}
+    <div class="d-flex justify-content-center">
+        <div class="col-lg-8 m-2">
+            <!-- About ROC block. -->
+            <div class="row home-bot-row d-flex justify-content-center align-items-center p-3 m-1 m-md-0 p-md-4 my-4">
+                <div class="mb-0 pb-0">
+                    <h1>About Rate Our Courses</h1>
+                </div>
+                <div>
+                    <p>Our goal is to vastly improve the process of choosing courses at Amherst College. By providing honest, course specific, student-produced reviews, we can make the often-stressful process of course selection become more transparent.</p>
+                </div>
+            </div>
+
+            <!-- Scheduling is tough block. -->
+            <div class="row home-bot-row d-flex">
+                <div class="col-6 d-lg-flex justify-content-center align-items-center d-none" style="min-height: 50vh;">
+                    <img src="/static/img/steeple.jpg" class="img-fluid"></img>
+                </div>
+                <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+                    <div class="container">
+                        <h3>Scheduling is tough. We're here to change that.</h3>
+                        <p>There are hundreds of courses to choose from every semester, spanning 41 departments at the College. Until now, there hasn’t been a way for you to survey those courses with specific qualities in mind. RoC Amherst allows you to rank courses by how interesting, difficult, and work-intensive they are, as well as by the quality of the professor- all according to your peers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team block. -->
+            <div class="row home-bot-row d-flex justify-content-center align-items-center py-2 my-4">
+                <div class="m-4"><h2>Meet The Team</h2></div>
+                    {% with img_path="/static/cameron.jpg", name="Cameron Matsui", title="Lead Developer", desc="Cameron '23E is majoring in Mathematics and Computer Science." %}
+                        {% include "components/team_row.html" %}
+                    {% endwith %}
+
+                    {% with img_path="/static/emmy.jpg", name="Emmy Sohn", title="Former Front End Developer", desc="Emmy graduated in 2022 with majors in Computer Science and Political Science." %}
+                        {% include "components/team_row.html" %}
+                    {% endwith %}
+
+                    {% with img_path="/static/lucas.jpg", name="Lucas Sheiner", title="Former Chief Business Officer", desc="Lucas graduated in 2019 with majors in Economics and Political Science." %}
+                        {% include "components/team_row.html" %}
+                    {% endwith %}
+
+                    {% with img_path="/static/rob.jpg", name="Rob Schwartz", title="Former Chief Technical Officer", desc="Rob graduated in 2019 with majors in Computer Science and Philosophy." %}
+                        {% include "components/team_row.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock bot_content %}

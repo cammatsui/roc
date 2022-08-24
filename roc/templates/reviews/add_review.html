@@ -1,0 +1,78 @@
+{% extends "single_card.html" %}
+
+{% block card_content %}
+    <div>
+        <form method="POST", action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Add A Review</legend>
+                <div class="form-group">
+                    {{ form.department.label(class="form-control-label my-0") }}
+                    {{ form.department(class_="form-control form-control-sm mb-1") }}
+
+                    {{ form.course.label(class="form-control-label my-0") }}
+                    {{ form.course(class_="form-control form-control-sm mb-1") }}
+
+                    {{ form.term.label(class="form-control-label my-0") }}
+                    {{ form.term(class_="form-control form-control-sm mb-1") }}
+
+                    {{ form.section.label(class="form-control-label my-0") }}
+                    {{ form.section(class_="form-control form-control-sm mb-1") }}
+                    <hr>
+
+                    <div class="row form-inline m-1">
+                        <i class="bi bi-star-fill rating-star-fill" id="star-1-input-professor_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-2-input-professor_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-3-input-professor_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-4-input-professor_rating"></i>
+                        <i class="bi bi-star rating-star mr-3" id="star-5-input-professor_rating"></i>
+                        {{ form.professor_rating(class="form-control form-control-sm rating-input mr-3") }}
+                        {{ form.professor_rating.label(class="form-control-label") }}
+                    </div>
+
+                    <div class="row form-inline m-1">
+                        <i class="bi bi-star-fill rating-star-fill" id="star-1-input-difficulty_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-2-input-difficulty_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-3-input-difficulty_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-4-input-difficulty_rating"></i>
+                        <i class="bi bi-star rating-star mr-3" id="star-5-input-difficulty_rating"></i>
+                        {{ form.difficulty_rating(class="form-control form-control-sm rating-input mr-3") }}
+                        {{ form.difficulty_rating.label(class="form-control-label") }}
+                    </div>
+
+                    <div class="row form-inline m-1">
+                        <i class="bi bi-star-fill rating-star-fill" id="star-1-input-workload_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-2-input-workload_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-3-input-workload_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-4-input-workload_rating"></i>
+                        <i class="bi bi-star rating-star mr-3" id="star-5-input-workload_rating"></i>
+                        {{ form.workload_rating(class="form-control form-control-sm rating-input mr-3") }}
+                        {{ form.workload_rating.label(class="form-control-label") }}
+                    </div>
+
+                    <div class="row form-inline m-1">
+                        <i class="bi bi-star-fill rating-star-fill" id="star-1-input-interesting_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-2-input-interesting_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-3-input-interesting_rating"></i>
+                        <i class="bi bi-star rating-star" id="star-4-input-interesting_rating"></i>
+                        <i class="bi bi-star rating-star mr-3" id="star-5-input-interesting_rating"></i>
+                        {{ form.interesting_rating(class="form-control form-control-sm rating-input mr-3") }}
+                        {{ form.interesting_rating.label(class="form-control-label") }}
+                    </div>
+                    <hr>
+                    <div class="row form-inline m-1">
+                        {{ form.grade(class="form-control form-control-sm rating-input mr-3") }}
+                        {{ form.grade.label(class="form-control-label") }}
+                    </div>
+                    <hr>
+                    {{ form.text.label(class="form-control-label") }}<br>
+                    {{ form.text(class_="form-control") }}<br>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn roc-btn-purple") }}
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="{{url_for('static', filename='js/add_review_form.js')}}"></script>
+{% endblock card_content %}

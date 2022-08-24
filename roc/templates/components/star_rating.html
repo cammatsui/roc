@@ -1,0 +1,8 @@
+<div class="row pl-3 ml-2">
+    {% for i in range(rating) %}
+        <i class="bi bi-star-fill rating-star-fill" style="color: #cca539"></i>
+    {% endfor %}
+    {% for i in range(5-rating) %}
+        <i class="bi bi-star rating-star"></i>
+    {% endfor %}
+</div>

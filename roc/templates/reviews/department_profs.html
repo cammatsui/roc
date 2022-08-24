@@ -1,0 +1,10 @@
+{% extends "single_card.html" %}
+
+{% block card_content %}
+<legend class="border-bottom mb-2">{{ department.name }} Department: Professors</legend>
+    {% for prof in department.sorted_professors() %}
+        {% with professor=prof %}
+            {% include "components/professor.html" %}
+        {% endwith %}
+    {% endfor %}
+{% endblock card_content %}

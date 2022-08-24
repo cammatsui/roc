@@ -1,0 +1,10 @@
+{% extends "single_card.html" %}
+
+{% block card_content %}
+    <legend class="border-bottom mb-2">My Reviews</legend>
+    {% for review in user.reviews %}
+        {% with review=review %}
+            {% include "components/review.html" %}
+        {% endwith %}
+    {% endfor %}
+{% endblock card_content %}
