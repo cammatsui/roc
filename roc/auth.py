@@ -1,5 +1,7 @@
 import functools
-from flask import Blueprint, render_template, url_for, redirect, flash, jsonify
+import os
+from flask import Blueprint, render_template, url_for, redirect, flash, jsonify, current_app
+from flask_mail import Mail, Message
 
 from roc.models import User
 from roc import DB_URI, TEST_DB_URI 
@@ -18,14 +20,18 @@ def login():
     page_title = 'Login'
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.login(form.email.data, form.password.data)
+        user = User.query.filter_by(email = form.email.data).first()
         if user is None:
             flash(f'Failed to login. Please check your email and password.', 'danger')
         elif not user.confirmed:
             flash(f'Please verify your account via email.', 'danger')
         else:
-            flash(f'Logged into account for email {form.email.data}.', 'success')
-            return redirect(url_for('routes.home'))
+            if User.login(form.email.data, form.password.data):
+                flash(f'Logged into account for email {form.email.data}.', 'success')
+                return redirect(url_for('routes.home'))
+            else:
+                flash(f'Failed to login. Please check your email and password.', 'danger')
+
     return render_template('auth/login.html', form=form, title=page_title)
 
 ROC_CONF_SUBJ = 'RateOurCourses: Confirm Account'
@@ -45,7 +51,7 @@ def register():
             if maybe_user is not None:
                 flash(f'Created account for email {form.email.data}.', 'success')
                 user = maybe_user
-                confirm_url = f'www.rateourcourses.com/confirm/{user.id}/{user.token}'
+                confirm_url = f'www.rateourcourses.com/auth/confirm/{user.id}/{user.token}'
                 send_email([user.email], ROC_CONF_SUBJ, ROC_CONF_MSG+confirm_url)
                 return redirect(url_for('routes.home'))
             flash(f'Email must be an Amherst student email.', 'danger')
@@ -64,9 +70,9 @@ def reset_request():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             user.reset_token()
-            reset_url = f'www.rateourcourses.com/{user.id}/{user.token}'
+            reset_url = f'www.rateourcourses.com/auth/reset/{user.id}/{user.token}'
             send_email([user.email], ROC_RESET_SUBJ, ROC_RESET_MSG+reset_url)
-            flash(f'Sent password reset email if account exists.')
+            flash(f'Sent password reset email if account exists.', 'success')
     return render_template('auth/reset_request.html', form=form, title=page_title)
 
 """ Reset password. """
@@ -86,7 +92,7 @@ def reset(uid, token):
     if form.validate_on_submit():
         user.set_pwd(form.password.data)
         flash('Successfully reset password.', 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('auth/reset.html', form=form, title=page_title)
 
 """ Confirm a token from an email. """
@@ -128,23 +134,15 @@ def login_required_api(view):
     return wrapped_view
 
 """ Send an email. """
-def send_email(recipients, subject='', text='', html=''):
+def send_email(recipients, subject='', text=''):
     # Don't send emails if in test environment.
-    if current_app.config[DB_URI] == TEST_DB_URI: return
+    #if current_app.config[DB_URI] == TEST_DB_URI: return
 
-    import boto3
-    ses = boto3.client('ses', region_name=AWS_REGION)
-    sender = 'info@rateourcourses.com'
-
-    ses.send_email(
-        Source=sender,
-        Destination={'ToAddresses': recipients},
-        Message={
-            'Subject': {'Data': subject},
-            'Body': {
-                'Text': {'Data': text},
-                'Html': {'Data': html}
-            }
-        }
+    mail = Mail(current_app)
+    msg = Message(
+        subject,
+        sender=os.environ['MAIL_USERNAME'],
+        recipients=recipients
     )
-
+    msg.body = text
+    mail.send(msg)

@@ -98,7 +98,7 @@ class User(db.Model):
     def login(email: str, pwd: str):
         user = User.query.filter_by(email=email).first()
         if user is None: return None
-        print(f"Logging in {email}")
+        if not user.confirmed: return None
         # Check if user is not yet migrated.
         if user.pwd_hash_deprecated:
             if sha256(pwd.encode('utf-8')).hexdigest() != user.pwd_hash_deprecated:

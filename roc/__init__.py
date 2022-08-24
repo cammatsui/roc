@@ -6,6 +6,8 @@ db = SQLAlchemy()
 
 DB_URI = 'SQLALCHEMY_DATABASE_URI'
 TEST_DB_URI = 'sqlite:///site.db'
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
 
 
 def create_app():
@@ -27,6 +29,15 @@ def create_app():
         app.config[DB_URI] = TEST_DB_URI
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    app.config['MAIL_SERVER'] = MAIL_SERVER
+    app.config['MAIL_PORT'] = MAIL_PORT
+    app.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
+    app.config['MAIL_PASSWORD'] = os.environ['MAIL_PASSWORD']
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+
+
     db.init_app(app)
 
     # Register blueprints for the app.   
