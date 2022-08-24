@@ -58,7 +58,7 @@ def register():
     return render_template('auth/register.html', form=form, title=page_title)
 
 ROC_RESET_SUBJ = 'RateOurCourses: Reset Password'
-ROC_RESET_MSG = 'Click the link below to reset your password for Rate Our Courses:<br>'
+ROC_RESET_MSG = 'Click the link below to reset your password for Rate Our Courses:\n'
 """ Request password reset. """
 @bp.route('/reset_request', methods=['GET', 'POST'])
 def reset_request():
