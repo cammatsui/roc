@@ -1,0 +1,26 @@
+venv/
+
+*.pyc
+__pycache__/
+*.db
+*.db-journal
+secrets.txt
+
+instance/
+.coverage
+.pytest_cache/
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+scripts/data/
+scripts/input/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.elasticbeanstalk/
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+.ebextensions/03_secrets.config
