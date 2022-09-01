@@ -78,7 +78,7 @@ def delete_review(review_id):
     if user is None: return jsonify({'status': 'failure'})
     try:
         review = Review.query.filter_by(id=review_id).first()
-        if review.author_id == user.id:
+        if review.author_id == user.id or user.is_admin:
             Review.delete_review(review)
             return jsonify({'status': 'success'})
     except:

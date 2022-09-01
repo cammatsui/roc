@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="col-6 mt-0">
-                    {% if review.author_id == user.id %}
+                    {% if review.author_id == user.id or user.is_admin %}
                     <button type="button" style="float: right;" class="btn btn-danger" data-toggle="modal" data-target="#confirmModal{{ review.id }}">
                         Delete
                     </button>
