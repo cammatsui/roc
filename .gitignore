@@ -5,6 +5,7 @@ __pycache__/
 *.db
 *.db-journal
 secrets.txt
+init_secrets.sh
 
 instance/
 .coverage
